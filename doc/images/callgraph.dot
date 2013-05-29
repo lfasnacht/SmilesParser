@@ -1,0 +1,28 @@
+digraph G {
+    smiles_parse -> smiles_parse_chain;
+    smiles_parse -> _chain_renumber;
+    smiles_parse -> flatten;
+    smiles_parse -> _chain_find_neighbors;
+    smiles_parse -> _unflatten;
+    
+    smiles_parse_chain -> smiles_parse_atom;
+    smiles_parse_chain -> smiles_parse_bond;
+    
+    smiles_parse_atom -> smiles_parse_chain;
+    smiles_parse_atom -> smiles_parse_bond;
+    
+    _chain_renumber -> _chain_renumber;
+    
+    flatten -> _flatten;
+    
+    _chain_find_neighbors -> _chain_find_neighbors_add_link;
+    _chain_find_neighbors -> _chain_find_neighbors;
+    
+    _unflatten -> _unflatten;
+    
+    
+    smiles_parse [shape="rectangle", style="filled", color="grey"];
+    flatten [shape="rectangle", style="filled", color="grey"];
+    
+    
+}

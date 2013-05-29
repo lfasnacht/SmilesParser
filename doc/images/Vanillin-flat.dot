@@ -1,0 +1,148 @@
+digraph G {
+    subgraph cluster_atom_0 {
+        O0;
+        label="atom[0]";
+    }
+    b0;
+    
+    subgraph cluster_atom_1 {
+        C1;
+        label="atom[1]";
+    }
+    b1;
+    
+    subgraph cluster_atom_2 {
+        C2;
+        label="atom[2]";
+    }
+    b2;
+    
+    subgraph cluster_atom_3 {
+        C3;
+        label="atom[3]";
+    }
+    b3;
+    
+    subgraph cluster_atom_4 {
+        C4;
+        label="atom[4]";
+    }
+    b4;
+    
+    subgraph cluster_atom_5 {
+        C5;
+        subgraph cluster_chain1 {
+            Chain1;
+            subgraph cluster_atom_6 {
+                O6;
+                label="atom[6]";
+            }
+            b5;
+            label="chain[1]";
+        }
+        label="atom[5]";
+    }
+    b6;
+    
+    subgraph cluster_atom_7 {
+        C7;
+        subgraph cluster_chain2 {
+            Chain2;
+            b7;
+            b8;
+            subgraph cluster_atom_8 {
+                O8;
+                label="atom[8]";
+            }
+            subgraph cluster_atom_9 {
+                C9;
+                label="atom[9]";
+            }
+            label="chain[2]";
+        }
+        label="atom[7]";
+    }
+    
+    b9;
+    
+    subgraph cluster_atom_10 {
+        C10;
+        label="atom[10]";
+	Ringbond0;
+	b10;
+    }
+
+    rankdir=LR;
+    Chain0->O0;
+    Chain0->b0;
+    Chain0->C1;
+    Chain0->b1;
+    Chain0->C2;
+    Chain0->b2;
+    Chain0->C3;
+    Chain0->b3;
+    Chain0->C4;
+    Chain0->b4;
+    Chain0->C5;
+    Chain0->b6;
+    Chain0->C7;
+    Chain0->b9;
+    Chain0->C10->Ringbond0->b10;
+    
+    //neighbors
+    O0->b0->C1->b1->C2->b2->C3->b3->C4->b4->C5->b5->O6 [color=gray, dir=both, constraint=false];
+    C5->b6->C7->b7->O8->b8->C9 [color=gray, dir=both, constraint=false];
+    //C7->b9->C10->b10->C2 [color=gray, dir=both, constraint=false];
+    C7->b9->C10->b10 [color=gray, dir=both, constraint=false];
+    //HUH!! 
+    b10->C2 [color=gray, dir=both, constraint=false];
+    
+    //Invisible edges to force ordering and to have nice neighbors
+    O0->b0->C1->b1->C2->b2->C3->b3->C4->b4->C5->b6->C7->b9->C10->Ringbond0 [style="invis"];
+    b5->O6->b7->O8->b8->C9 [style="invis"];
+    
+    //Colors
+    b0 [label="0", color="blue", fontcolor="blue"];
+    b1 [label="1", color="blue", fontcolor="blue"];
+    b2 [label="2", color="blue", fontcolor="blue"];
+    b3 [label="3", color="blue", fontcolor="blue"];
+    b4 [label="4", color="blue", fontcolor="blue"];
+    b5 [label="5", color="blue", fontcolor="blue"];
+    b6 [label="6", color="blue", fontcolor="blue"];
+    b7 [label="7", color="blue", fontcolor="blue"];
+    b8 [label="8", color="blue", fontcolor="blue"];
+    b9 [label="9", color="blue", fontcolor="blue"];
+    b10 [label="10", color="blue", fontcolor="blue"];
+    
+    O0 [label="0 (0)", color="red", fontcolor="red"];
+    C1 [label="1", color="red", fontcolor="red"];
+    C2 [label="2", color="red", fontcolor="red"];
+    C3 [label="3", color="red", fontcolor="red"];
+    C4 [label="4", color="red", fontcolor="red"];
+    C5 [label="5", color="red", fontcolor="red"];
+    O6 [label="6 (O)", color="red", fontcolor="red"];
+    C7 [label="7", color="red", fontcolor="red"];
+    O8 [label="8 (O)", color="red", fontcolor="red"];
+    C9 [label="9", color="red", fontcolor="red"];
+    C10 [label="10", color="red", fontcolor="red"];
+    //b1->C2->b2->C3->b3->C4->b4->C5->b6->C7->b9->C10->Ringbond0 [style="invis"];
+    
+
+    C5->Chain1;
+    Chain1->b5;
+    Chain1->O6;
+
+    C7->Chain2;
+    Chain2->b7;
+    Chain2->O8;
+    Chain2->b8;
+    Chain2->C9;
+    
+    {rank="same"; O0 b0 C1 b1 C2 b2 C3 b3 C4 b4 C5 b6 C7 b9 C10}
+    {rank="same"; Chain1 Chain2 Ringbond0}
+    {rank="same"; b10 b5 O6 b7 O8 b8 C9}
+    
+    
+    nodesep=0.2;
+    edge [weight=3];
+}
